@@ -1,0 +1,7 @@
+compile
+*.o
+*/.deps/*.Po
+*/*/.deps/*.Po
+*/*/*/.deps/*.Po
+*.dirstamp
+*.Tpo

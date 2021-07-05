@@ -6,9 +6,12 @@ set -x # print commands
 case "x$1" in
 	x)
 		echo "Generating build system..."
+		echo "(If this fails, you can just run autoreconf with your favorite flags instead)"
 		mkdir -p m4
-		cp -f /usr/share/gettext/config.rpath . || \
-		cp -f /usr/local/share/gettext/config.rpath . || true
+		cp -f /usr/share/gettext/config.rpath build-aux || \
+		cp -f /usr/local/share/gettext/config.rpath build-aux || \
+		cp -f /opt/local/share/gettext/config.rpath build-aux || \
+		cp -f /opt/sw/share/gettext/config.rpath build-aux || true
 		if autoreconf --force --install --verbose $*; then
 			echo "Build system has been generated."
 		else
@@ -17,15 +20,15 @@ case "x$1" in
 
 	xhelp)
 		echo "Usage: $0 [ACTION]"
-		echo
+		echo ""
 		echo "Generates Autotools build system."
-		echo
+		echo ""
 		echo "Actions:"
 		echo "  help   print this help message"
 		echo "  clean  remove generated files"
-		echo
+		echo ""
 		echo "If no actions are specified it will generate the build system."
-		echo
+		echo ""
 		echo "Report bugs at: <http://www.secretmaryo.org/phpBB3>";;
 
 	xclean)
@@ -36,9 +39,13 @@ case "x$1" in
 			fi
 		fi
 		echo "Removing various generated files..."
-		rm -rf aclocal.m4 config.h.in config.guess config.sub config.rpath configure depcomp install-sh autom4te.cache/ build-aux/ m4/
+		rm -rf *~ aclocal.m4 config.h.in config.guess config.sub config.rpath configure depcomp install-sh autoscan.log autom4te.cache/ build-aux/ m4/
 		echo "Removing 'Makefile.in's recursively..."
-		for file in `find -name Makefile.in`; do
+		MYFIND=find
+		if test -n "`which gfind`" && test -x "`which gfind`"; then
+			MYFIND=gfind
+		fi
+		for file in `${MYFIND} -name Makefile.in`; do
 			rm -f $file
 		done
 		echo "Generated files removed.";;
