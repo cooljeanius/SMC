@@ -40,7 +40,7 @@ case "x$1" in
 			fi
 		fi
 		echo "Removing various generated files..."
-		rm -rf *~ aclocal.m4 config.h.in config.guess config.sub config.rpath configure depcomp install-sh autoscan.log autom4te.cache/ build-aux/ m4/
+		rm -rf *~ aclocal.m4 config.h config.h.in config.log config.status compile config.guess config.sub config.rpath configure depcomp install-sh missing stamp-h1 autoscan.log autom4te.cache/ build-aux/ m4/
 		echo "Removing 'Makefile.in's recursively..."
 		MYFIND=find
 		if test -n "`which gfind`" && test -x "`which gfind`"; then
