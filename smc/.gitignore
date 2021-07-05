@@ -1,7 +1,16 @@
 compile
 *.o
+*.o.tmp
 */.deps/*.Po
 */*/.deps/*.Po
 */*/*/.deps/*.Po
 *.dirstamp
 *.Tpo
+build-aux/*
+conftest.c
+conftest.cpp
+conftest.err
+conftest.i
+confdefs.h
+confinc.mk
+confmf.*

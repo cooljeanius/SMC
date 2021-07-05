@@ -8,6 +8,7 @@ case "x$1" in
 		echo "Generating build system..."
 		echo "(If this fails, you can just run autoreconf with your favorite flags instead)"
 		mkdir -p m4
+		mkdir -p build-aux
 		cp -f /usr/share/gettext/config.rpath build-aux || \
 		cp -f /usr/local/share/gettext/config.rpath build-aux || \
 		cp -f /opt/local/share/gettext/config.rpath build-aux || \
