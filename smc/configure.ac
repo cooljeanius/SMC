@@ -12,6 +12,12 @@ AM_INIT_AUTOMAKE([1.11.6 foreign subdir-objects])
 AM_SILENT_RULES([yes])
 
 ### Check for programs ###
+if test "x${AWK}" = "x"; then
+  test -z "${AWK}" || unset AWK
+  AC_PROG_AWK
+else
+  test -n "${AWK}" && export AWK
+fi
 AC_PROG_CC
 AC_PROG_CXX
 AC_LANG([C++])
@@ -19,7 +25,7 @@ CXXFLAGS="${CXXFLAGS} -Wall"
 AC_PROG_INSTALL
 AC_PROG_MKDIR_P
 if test "x${ac_cv_prog_make_make_set}" = "x"; then
-  test -z "${ac_cv_prog_make_make_set}"
+  test -z "${ac_cv_prog_make_make_set}" || unset ac_cv_prog_make_make_set
   AC_PROG_MAKE_SET
 fi
 PKG_PROG_PKG_CONFIG
@@ -105,7 +111,7 @@ AM_GNU_GETTEXT_VERSION([0.19.8])dnl
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_CHECK_HEADERS([libintl.h])
 if test "x${ac_cv_header_unistd_h}" = "x"; then
-  test -z "${ac_cv_header_unistd_h}"
+  test -z "${ac_cv_header_unistd_h}" || unset ac_cv_header_unistd_h
   AC_CHECK_HEADERS([unistd.h])
 fi
 

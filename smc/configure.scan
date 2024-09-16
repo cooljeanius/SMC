@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.70])
+AC_PREREQ([2.72])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
 AC_CONFIG_SRCDIR([makefiles/MSVC9.0/resource.h])
 AC_CONFIG_HEADERS([config.h])
@@ -9,10 +9,34 @@ AC_CONFIG_HEADERS([config.h])
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC
+AC_PROG_AWK
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
+AC_PROG_MKDIR_P
 
 # Checks for libraries.
+# FIXME: Replace 'main' with a function in '-lCEGUIBase':
+AC_CHECK_LIB([CEGUIBase], [main])
+# FIXME: Replace 'main' with a function in '-lCEGUINullRenderer':
+AC_CHECK_LIB([CEGUINullRenderer], [main])
+# FIXME: Replace 'main' with a function in '-lCEGUIOpenGLRenderer':
+AC_CHECK_LIB([CEGUIOpenGLRenderer], [main])
+# FIXME: Replace 'main' with a function in '-lSDL':
+AC_CHECK_LIB([SDL], [main])
+# FIXME: Replace 'main' with a function in '-lSDL_image':
+AC_CHECK_LIB([SDL_image], [main])
+# FIXME: Replace 'main' with a function in '-lSDL_mixer':
+AC_CHECK_LIB([SDL_mixer], [main])
+# FIXME: Replace 'main' with a function in '-lSDL_ttf':
+AC_CHECK_LIB([SDL_ttf], [main])
+# FIXME: Replace 'main' with a function in '-lSDLmain':
+AC_CHECK_LIB([SDLmain], [main])
+# FIXME: Replace 'main' with a function in '-liconv':
+AC_CHECK_LIB([iconv], [main])
+# FIXME: Replace 'main' with a function in '-lintl':
+AC_CHECK_LIB([intl], [main])
+# FIXME: Replace 'main' with a function in '-lpng':
+AC_CHECK_LIB([png], [main])
 
 # Checks for header files.
 AC_CHECK_HEADERS([libintl.h unistd.h])
